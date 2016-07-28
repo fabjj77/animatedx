@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames</groupId>
+        <artifactId>animatedx-parent</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>se.animatedgames.wallet-server</groupId>
+    <artifactId>animatedx-wallet-server</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Wallet Server Modules</name>
+    <description>The Wallet Server parent module</description>
+
+    <modules>
+        <module>wallet-server-model</module>
+        <module>wallet-server</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>se.animatedgames</groupId>
+            <artifactId>animatedx-test</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

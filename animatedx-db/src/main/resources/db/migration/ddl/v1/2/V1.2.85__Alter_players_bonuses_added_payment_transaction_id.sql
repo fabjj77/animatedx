@@ -1,0 +1,3 @@
+alter table players_bonuses add column payment_transaction_id bigint;
+
+alter table players_bonuses add constraint players_bonuses_payment_transaction_id_fkey foreign key (payment_transaction_id) references payment_transactions (id);

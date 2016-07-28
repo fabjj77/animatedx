@@ -1,0 +1,30 @@
+# Target directories
+target/
+out/
+
+# IntelliJ files that are reflections of pom files anyway
+*.iml
+
+# IntelliJ user specific, and unnecessary stuff
+# The rest is _should_ be tracked
+.idea/artifacts
+.idea/dictionaries
+.idea/libraries
+.idea/runConfigurations
+.idea/bashsupport_project.xml
+.idea/modules.xml
+.idea/gradle.xml
+.idea/workspace.xml
+.idea/dataSources.*
+atlassian-ide-plugin.xml
+
+# Eclipse crap
+.classpath
+.project
+.settings/
+
+# Mac crap
+.DS_Store
+
+# Merge crap, since some find it hard...
+*.orig

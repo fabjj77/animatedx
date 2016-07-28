@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:ns1="http://common.services.adyen.com" xmlns:ns2="http://payment.services.adyen.com" xmlns:tns="http://payout.services.adyen.com" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" targetNamespace="http://payout.services.adyen.com">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://payout.services.adyen.com">
+      <xsd:import namespace="http://common.services.adyen.com" />
+      <xsd:import namespace="http://payment.services.adyen.com" />
+      <xsd:complexType name="CancelDetailRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="merchantAccount" type="xsd:string" />
+          <xsd:element minOccurs="1" name="recurringDetailReference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperReference" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CancelDetailResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="pspReference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="resultCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModifyRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="merchantAccount" type="xsd:string" />
+          <xsd:element minOccurs="1" name="originalReference" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModifyResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="pspReference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="response" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoreDetailAndSubmitRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="amount" type="ns1:Amount" />
+          <xsd:element minOccurs="0" name="bank" nillable="true" type="ns2:BankAccount" />
+          <xsd:element minOccurs="0" name="card" nillable="true" type="ns2:Card" />
+          <xsd:element minOccurs="0" name="fraudOffset" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="1" name="merchantAccount" type="xsd:string" />
+          <xsd:element minOccurs="1" name="recurring" type="ns2:Recurring" />
+          <xsd:element minOccurs="1" name="reference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperEmail" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperReference" type="xsd:string" />
+          <xsd:element minOccurs="0" name="shopperStatement" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoreDetailAndSubmitResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="pspReference" type="xsd:string" />
+          <xsd:element minOccurs="0" name="refusalReason" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="1" name="resultCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoreDetailRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="0" name="bank" nillable="true" type="ns2:BankAccount" />
+          <xsd:element minOccurs="0" name="card" nillable="true" type="ns2:Card" />
+          <xsd:element minOccurs="0" name="fraudOffset" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="1" name="merchantAccount" type="xsd:string" />
+          <xsd:element minOccurs="1" name="recurring" type="ns2:Recurring" />
+          <xsd:element minOccurs="1" name="shopperEmail" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperReference" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoreDetailResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="pspReference" type="xsd:string" />
+          <xsd:element minOccurs="0" name="recurringDetailReference" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="1" name="resultCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubmitRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="amount" type="ns1:Amount" />
+          <xsd:element minOccurs="0" name="fraudOffset" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="1" name="merchantAccount" type="xsd:string" />
+          <xsd:element minOccurs="1" name="recurring" type="ns2:Recurring" />
+          <xsd:element minOccurs="1" name="reference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="selectedRecurringDetailReference" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperEmail" type="xsd:string" />
+          <xsd:element minOccurs="1" name="shopperReference" type="xsd:string" />
+          <xsd:element minOccurs="0" name="shopperStatement" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubmitResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additionalData" nillable="true" type="tns:anyType2anyTypeMap" />
+          <xsd:element minOccurs="1" name="pspReference" type="xsd:string" />
+          <xsd:element minOccurs="0" name="refusalReason" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="1" name="resultCode" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="anyType2anyTypeMap">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element maxOccurs="1" minOccurs="0" name="key" type="xsd:anyType" />
+                <xsd:element maxOccurs="1" minOccurs="0" name="value" type="xsd:anyType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:element name="cancelDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:CancelDetailRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:CancelDetailResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirm">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:ModifyRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:ModifyResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="decline">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:ModifyRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="declineResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:ModifyResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storeDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:StoreDetailRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storeDetailAndSubmit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:StoreDetailAndSubmitRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storeDetailAndSubmitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:StoreDetailAndSubmitResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storeDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:StoreDetailResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="request" nillable="true" type="tns:SubmitRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="response" nillable="true" type="tns:SubmitResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://common.services.adyen.com">
+      <xsd:complexType name="Address">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="city" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="country" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="houseNumberOrName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="postalCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stateOrProvince" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="street" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Amount">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="currency">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="3" />
+                <xsd:maxLength value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="value" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://payment.services.adyen.com">
+      <xsd:import namespace="http://common.services.adyen.com" />
+      <xsd:complexType name="BankAccount">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bankAccountNumber" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bankLocationId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bankName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bic" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="countryCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="iban" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ownerName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Card">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="billingAddress" nillable="true" type="ns1:Address" />
+          <xsd:element minOccurs="0" name="brand" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cvc" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="20" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="expiryMonth">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="2" />
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="expiryYear">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="4" />
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="holderName">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="issueNumber" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" name="number">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="4" />
+                <xsd:maxLength value="19" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="startMonth" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="2" />
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="startYear" nillable="true">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="4" />
+                <xsd:maxLength value="4" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Recurring">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="contract" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="recurringDetailName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="cancelDetailRequest">
+    <wsdl:part name="parameters" element="tns:cancelDetail" />
+  </wsdl:message>
+  <wsdl:message name="cancelDetailResponse">
+    <wsdl:part name="parameters" element="tns:cancelDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="confirmRequest">
+    <wsdl:part name="parameters" element="tns:confirm" />
+  </wsdl:message>
+  <wsdl:message name="confirmResponse">
+    <wsdl:part name="parameters" element="tns:confirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="declineRequest">
+    <wsdl:part name="parameters" element="tns:decline" />
+  </wsdl:message>
+  <wsdl:message name="declineResponse">
+    <wsdl:part name="parameters" element="tns:declineResponse" />
+  </wsdl:message>
+  <wsdl:message name="storeDetailAndSubmitRequest">
+    <wsdl:part name="parameters" element="tns:storeDetailAndSubmit" />
+  </wsdl:message>
+  <wsdl:message name="storeDetailAndSubmitResponse">
+    <wsdl:part name="parameters" element="tns:storeDetailAndSubmitResponse" />
+  </wsdl:message>
+  <wsdl:message name="storeDetailRequest">
+    <wsdl:part name="parameters" element="tns:storeDetail" />
+  </wsdl:message>
+  <wsdl:message name="storeDetailResponse">
+    <wsdl:part name="parameters" element="tns:storeDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="submitRequest">
+    <wsdl:part name="parameters" element="tns:submit" />
+  </wsdl:message>
+  <wsdl:message name="submitResponse">
+    <wsdl:part name="parameters" element="tns:submitResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PayoutPortType">
+    <wsdl:operation name="cancelDetail">
+      <wsdl:input name="cancelDetailRequest" message="tns:cancelDetailRequest" />
+      <wsdl:output name="cancelDetailResponse" message="tns:cancelDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="confirm">
+      <wsdl:input name="confirmRequest" message="tns:confirmRequest" />
+      <wsdl:output name="confirmResponse" message="tns:confirmResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="decline">
+      <wsdl:input name="declineRequest" message="tns:declineRequest" />
+      <wsdl:output name="declineResponse" message="tns:declineResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="storeDetail">
+      <wsdl:input name="storeDetailRequest" message="tns:storeDetailRequest" />
+      <wsdl:output name="storeDetailResponse" message="tns:storeDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="storeDetailAndSubmit">
+      <wsdl:input name="storeDetailAndSubmitRequest" message="tns:storeDetailAndSubmitRequest" />
+      <wsdl:output name="storeDetailAndSubmitResponse" message="tns:storeDetailAndSubmitResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="submit">
+      <wsdl:input name="submitRequest" message="tns:submitRequest" />
+      <wsdl:output name="submitResponse" message="tns:submitResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PayoutHttpBinding" type="tns:PayoutPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cancelDetail">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="cancelDetailRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelDetailResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirm">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confirmRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decline">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="declineRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="declineResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeDetail">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="storeDetailRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="storeDetailResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeDetailAndSubmit">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="storeDetailAndSubmitRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="storeDetailAndSubmitResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="submitRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Payout">
+    <wsdl:port name="PayoutHttpPort" binding="tns:PayoutHttpBinding">
+      <wsdlsoap:address location="https://pal-test.adyen.com/pal/servlet/soap/Payout" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

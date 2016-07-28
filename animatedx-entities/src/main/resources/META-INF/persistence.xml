@@ -1,0 +1,92 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="animatedxPu" transaction-type="JTA">
+        <jta-data-source>jdbc/AnixDbPool</jta-data-source>
+
+        <class>com.cs.affiliate.PlayerAffiliate</class>
+
+        <class>com.cs.agreement.TermsAndConditionsVersion</class>
+
+        <class>com.cs.audit.PlayerActivity</class>
+        <class>com.cs.audit.UserActivity</class>
+
+        <class>com.cs.system.SystemControl</class>
+
+        <class>com.cs.avatar.Avatar</class>
+        <class>com.cs.avatar.AvatarBaseType</class>
+        <class>com.cs.avatar.AvatarHistory</class>
+        <class>com.cs.avatar.ChapterTranslation</class>
+        <class>com.cs.avatar.Level</class>
+
+        <class>com.cs.bonus.Bonus</class>
+        <class>com.cs.bonus.PlayerBonus</class>
+
+        <class>com.cs.game.Game</class>
+        <class>com.cs.game.GameInfo</class>
+        <class>com.cs.game.GameSession</class>
+        <class>com.cs.game.GameTransaction</class>
+
+        <class>com.cs.item.Item</class>
+        <class>com.cs.item.PlayerItem</class>
+
+        <class>com.cs.messaging.email.BrontoContact</class>
+        <class>com.cs.messaging.email.BrontoField</class>
+        <class>com.cs.messaging.email.BrontoList</class>
+        <class>com.cs.messaging.email.BrontoWorkflow</class>
+
+        <class>com.cs.payment.CreditTransaction</class>
+        <class>com.cs.payment.DCPaymentTransaction</class>
+        <class>com.cs.payment.PaymentMethod</class>
+        <class>com.cs.payment.PaymentTransaction</class>
+        <class>com.cs.payment.Provider</class>
+
+        <class>com.cs.player.Address</class>
+        <class>com.cs.player.Player</class>
+        <class>com.cs.player.PlayerComment</class>
+        <class>com.cs.player.PlayerLimitation</class>
+        <class>com.cs.player.PlayerLimitationLockout</class>
+        <class>com.cs.player.PlayerLimitationTrace</class>
+        <class>com.cs.player.PlayerRegisterTrack</class>
+        <class>com.cs.player.PlayerTermsAndConditionsVersion</class>
+        <class>com.cs.player.PlayerUuid</class>
+        <class>com.cs.player.Wallet</class>
+
+        <class>com.cs.promotion.PlayerPromotion</class>
+        <class>com.cs.promotion.Promotion</class>
+
+        <class>com.cs.system.PlayerSessionRegistry</class>
+
+        <class>com.cs.user.Role</class>
+        <class>com.cs.user.User</class>
+        <class>com.cs.user.UserRole</class>
+
+        <class>com.cs.whitelist.WhiteListedPlayer</class>
+        <class>com.cs.whitelist.WhiteListedIpAddress</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!--
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="/tmp/mydrop.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="/tmp/mycreate.ddl"/>
+            -->
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.engine.transaction.jta.platform.internal.JBossAppServerJtaPlatform"/>
+
+            <!-- Enable lazy loading of entity graphs outside transactions -->
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+
+            <property name="wildfly.jpa.allowdefaultdatasourceuse" value="false"/>
+
+            <!-- Used to dump sql to out -->
+            <!--<property name="hibernate.show_sql" value="true"/>-->
+            <!--<property name="hibernate.format_sql" value="true"/>-->
+        </properties>
+    </persistence-unit>
+</persistence>

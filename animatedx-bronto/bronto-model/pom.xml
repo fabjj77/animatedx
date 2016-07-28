@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames.bronto</groupId>
+        <artifactId>animatedx-bronto</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>bronto-model</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Bronto model</name>
+    <description>Bronto model</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>axis</groupId>
+            <artifactId>axis-wsdl4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis-jaxrpc</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.glassfish.metro</groupId>
+                        <artifactId>webservices-tools</artifactId>
+                        <version>${metro-webservices.version}</version>
+                    </dependency>
+
+                    <!-- see https://java.net/jira/browse/WSIT-1672 -->
+                    <dependency>
+                        <groupId>org.glassfish.metro</groupId>
+                        <artifactId>webservices-rt</artifactId>
+                        <version>${metro-webservices.version}</version>
+                    </dependency>
+                </dependencies>
+
+                <executions>
+                    <execution>
+                        <id>notifications</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+
+                        <configuration>
+                            <verbose>true</verbose>
+
+                            <packageName>com.bronto.api.v4</packageName>
+
+                            <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+                            <wsdlFiles>
+                                <wsdlFile>bronto-v4.wsdl</wsdlFile>
+                            </wsdlFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

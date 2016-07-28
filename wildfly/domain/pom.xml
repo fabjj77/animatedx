@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames.wildfly</groupId>
+        <artifactId>wildfly</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>domain</artifactId>
+    <packaging>jar</packaging>
+
+    <name>WildFly domain</name>
+    <description>WildFly domain build scripts</description>
+
+    <profiles>
+        <profile>
+            <id>wildfly-setup</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>wildfly.setup</name>
+                </property>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.mariadb.jdbc</groupId>
+                    <artifactId>mariadb-java-client</artifactId>
+                    <version>${mariadb-java-client.version}</version>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+
+                        <executions>
+                            <!-- Deploy the JDBC library -->
+                            <execution>
+                                <id>deploy-jdbc-driver</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy-artifact</goal>
+                                </goals>
+
+                                <configuration>
+                                    <groupId>org.mariadb.jdbc</groupId>
+                                    <artifactId>mariadb-java-client</artifactId>
+                                    <name>mariadb</name>
+                                </configuration>
+                            </execution>
+
+                            <!-- Add the data source -->
+                            <execution>
+                                <id>add-data-source</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>execute-commands</goal>
+                                </goals>
+
+                                <configuration>
+                                    <execute-commands>
+                                        <scripts>
+                                            <script>${project.build.outputDirectory}/setup/V0.1.2__Create-datasource.cli</script>
+                                        </scripts>
+                                    </execute-commands>
+                                </configuration>
+                            </execution>
+
+                            <!-- Add the websocket message jms queue -->
+                            <execution>
+                                <id>add-ws-queue</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>execute-commands</goal>
+                                </goals>
+
+                                <configuration>
+                                    <execute-commands>
+                                        <scripts>
+                                            <script>${project.build.outputDirectory}/setup/V0.4.1__Create-websocket-jms-queue.cli</script>
+                                        </scripts>
+                                    </execute-commands>
+                                </configuration>
+                            </execution>
+
+                            <!-- Add the bronto message jms queue -->
+                            <execution>
+                                <id>add-bronto-queue</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>execute-commands</goal>
+                                </goals>
+
+                                <configuration>
+                                    <execute-commands>
+                                        <scripts>
+                                            <script>${project.build.outputDirectory}/setup/V1.1.1__Create-bronto-jms-queue.cli</script>
+                                        </scripts>
+                                    </execute-commands>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

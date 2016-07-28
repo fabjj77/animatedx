@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames</groupId>
+        <artifactId>animatedx-parent</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>animatedx-ear</artifactId>
+    <packaging>ear</packaging>
+
+    <name>Ear Module</name>
+    <description>Enterprise Archive module</description>
+
+    <dependencies>
+        <!-- These are the actual deployable applications -->
+        <dependency>
+            <groupId>se.animatedgames.rest</groupId>
+            <artifactId>casino</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>se.animatedgames.rest</groupId>
+            <artifactId>back-office</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>se.animatedgames.payment.adyen</groupId>
+            <artifactId>notifications-server</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>se.animatedgames.payment</groupId>
+            <artifactId>devcode</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>se.animatedgames.wallet-server</groupId>
+            <artifactId>wallet-server</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+
+        <!-- This includes all the dependencies for the applications. Necessary for skinny wars... -->
+        <!-- Commented out until we get skinny wars to work -->
+        <!--<dependency>-->
+            <!--<groupId>se.animatedgames.rest</groupId>-->
+            <!--<artifactId>casino</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>pom</type>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>se.animatedgames.rest</groupId>-->
+            <!--<artifactId>back-office</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>pom</type>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>se.animatedgames.payment.adyen</groupId>-->
+            <!--<artifactId>notifications-server</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>pom</type>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>se.animatedgames.payment</groupId>-->
+            <!--<artifactId>devcode</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>pom</type>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>se.animatedgames.wallet-server</groupId>-->
+            <!--<artifactId>wallet-server</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>pom</type>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <finalName>animatedx</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+
+                    <!-- Commented out until we get skinny wars to work -->
+                    <!--<skinnyWars>true</skinnyWars>-->
+
+                    <modules>
+                        <webModule>
+                            <groupId>se.animatedgames.rest</groupId>
+                            <artifactId>casino</artifactId>
+                            <contextRoot>/casino</contextRoot>
+                        </webModule>
+
+                        <webModule>
+                            <groupId>se.animatedgames.rest</groupId>
+                            <artifactId>back-office</artifactId>
+                            <contextRoot>/back-office</contextRoot>
+                        </webModule>
+
+                        <webModule>
+                            <groupId>se.animatedgames.payment.adyen</groupId>
+                            <artifactId>notifications-server</artifactId>
+                            <contextRoot>/adyen</contextRoot>
+                        </webModule>
+
+                        <webModule>
+                            <groupId>se.animatedgames.payment</groupId>
+                            <artifactId>devcode</artifactId>
+                            <contextRoot>/devcode</contextRoot>
+                        </webModule>
+
+                        <webModule>
+                            <groupId>se.animatedgames.wallet-server</groupId>
+                            <artifactId>wallet-server</artifactId>
+                            <contextRoot>/wallet-server</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

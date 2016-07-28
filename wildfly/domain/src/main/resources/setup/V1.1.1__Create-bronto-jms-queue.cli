@@ -1,0 +1,3 @@
+# Batch script to create the data source
+
+jms-queue add --queue-address=com.cs.messaging.bronto.messages --durable=true --entries=["java:jboss/jms/com.cs.messaging.bronto.messages"]

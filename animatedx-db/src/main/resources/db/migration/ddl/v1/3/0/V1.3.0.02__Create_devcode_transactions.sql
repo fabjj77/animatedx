@@ -1,0 +1,31 @@
+create table devcode_transactions
+(
+  id                   bigint                 not null auto_increment,
+  player_id            bigint                 not null,
+  event_type           character varying(50)  not null,
+  level                bigint                 not null,
+  authorization_code   character varying(46),
+  amount               bigint                 not null,
+  currency             character varying(3)   not null,
+  transaction_id       character varying(60)  not null,
+  transaction_type     integer                not null,
+  transaction_name     character varying(120) not null,
+  account_id           character varying(46),
+  masked_account       character varying(40),
+  attributes           character varying(140),
+  bonus_code           character varying(100),
+  original_transaction character varying(60),
+  transaction_provider character varying(60),
+  status_code          character varying(60),
+  psp_status_code      character varying(60),
+  success              tinyint,
+  error_code           integer,
+  error_message        character varying(120),
+  provider_id          integer                not null,
+  version              integer                not null,
+  created_date         timestamp              not null,
+
+  constraint devcode_transactions_pkey primary key (id),
+  constraint devcode_transactions_player_id_fkey foreign key (player_id) references players (id),
+  constraint devcode_transactions_provider_id_fkey foreign key (provider_id) references providers (id)
+);

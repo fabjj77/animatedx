@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames</groupId>
+        <artifactId>animatedx-parent</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>se.animatedgames.casino-module</groupId>
+    <artifactId>animatedx-casino-module</artifactId>
+    <packaging>pom</packaging>
+
+    <name>NetEnt CasinoModule Modules</name>
+    <description>The NetEnt CasinoModule parent module</description>
+
+    <modules>
+        <module>casino-module-model</module>
+    </modules>
+
+</project>

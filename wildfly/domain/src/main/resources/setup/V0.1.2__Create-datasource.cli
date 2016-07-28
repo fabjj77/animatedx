@@ -1,0 +1,5 @@
+# Batch script to create the data source
+
+data-source add --jndi-name=java:/jdbc/AnixDbPool --name=AnixDbPool --connection-url=jdbc:mysql://localhost:3306/anix \
+    --driver-name=mariadb_org.mariadb.jdbc.Driver_1_1 --user-name=anix --password=anix \
+    --max-pool-size=30 --idle-timeout-minutes=5

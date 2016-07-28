@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>se.animatedgames</groupId>
+        <artifactId>animatedx-parent</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>se.animatedgames.services</groupId>
+    <artifactId>animatedx-services</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Services Modules</name>
+    <description>Services parent module</description>
+
+    <modules>
+        <module>communication-service</module>
+        <module>core-service</module>
+
+        <module>system-service</module>
+        <module>game-service</module>
+
+        <module>player-service</module>
+        <module>payment-service</module>
+
+        <module>user-service</module>
+        <module>scheduling-service</module>
+        <module>bonus-service</module>
+
+        <module>report-service</module>
+    </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>se.animatedgames</groupId>
+            <artifactId>animatedx-test</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

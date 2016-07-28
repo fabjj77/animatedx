@@ -1,0 +1,1 @@
+alter table payment_transactions add column version int;

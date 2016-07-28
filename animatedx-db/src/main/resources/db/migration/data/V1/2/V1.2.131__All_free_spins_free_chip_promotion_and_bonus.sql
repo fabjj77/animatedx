@@ -1,0 +1,14 @@
+insert into promotions (id, name, valid_from, valid_to, created_by, created_date, promotion_type, required_level, auto_grant_bonuses)
+values
+  (6, 'Free Spin Bonus Money Promotion', timestamp('2014-05-13 19:29:26'), timestamp('2029-12-31 23:59:59'), 1, current_timestamp, 'SIGN_UP', 1, 0);
+
+insert into players_promotions (promotion_id, activation_date, player_id)
+  select
+    6, current_timestamp, id
+  from players;
+
+insert into bonuses (id, name, valid_from, valid_to, type, netent_bonus_code, created_by, created_date, promotion_id,
+                     amount, maximum_amount, quantity, percentage, currency, required_level, bonus_code, auto_grant_next)
+values
+  (141, 'Free Spin Bonus Money', timestamp('2013-12-31 23:59:59'), timestamp('2029-12-31 23:59:59'), 'BONUS_MONEY', null, 1, current_timestamp, 6,
+   0, null, null, null, 'EUR', 1, null, 0);

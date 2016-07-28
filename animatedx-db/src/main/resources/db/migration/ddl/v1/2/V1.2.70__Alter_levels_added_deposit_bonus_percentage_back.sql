@@ -1,0 +1,1 @@
+alter table levels add column deposit_bonus_percentage decimal not null;

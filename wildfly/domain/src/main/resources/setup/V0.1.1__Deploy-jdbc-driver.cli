@@ -1,0 +1,10 @@
+# Batch script to deploy the PostgreSQL driver to the WildFly server
+
+# Start batching commands
+batch
+
+# Deploy the driver
+deploy ../../../../../../animatedx-db/lib/postgresql-9.2-1002.jdbc4.jar --name=postgres
+
+# Run the batch commands
+run-batch
